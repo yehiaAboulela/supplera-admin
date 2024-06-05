@@ -1,0 +1,86 @@
+<div class="row">
+  <button class="burger-minu btn" (click)="navActive = true">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+  <div class="col-lg-4">
+    <div class="bg-white my-nav" [ngClass]="{ active: navActive }">
+      <!-- burger minue ----------------------------->
+      <button (click)="navActive = false" class="btn exit-btn">
+        <i class="fa fa-x"></i>
+      </button>
+      <!-- nav -------------------------------------->
+      <div class="content">
+        <button class="btn bg-main text-white w-100">+ Compose</button>
+        <div class="mt-4">
+          <h2 class="h6 mb-3">My Email</h2>
+          <ul class="list-unstyled">
+            <li>
+              <a
+                class="my-nav-element"
+                routerLink="messages"
+                routerLinkActive="active"
+              >
+                <div class="text-black fs-6">
+                  <i class="fa-regular fa-envelope"></i>
+                  <span class="ps-2">Inbox</span>
+                </div>
+                <span class="text-black-50 fw-bold">
+                  {{ inbox.length }}
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="my-nav-element"
+                routerLink="sent"
+                routerLinkActive="active"
+              >
+                <div class="text-black fs-6">
+                  <i class="fa-regular fa-paper-plane"></i>
+                  <span class="ps-2">Sent</span>
+                </div>
+                <span class="text-black-50 fw-bold">{{ sent.length }}</span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="my-nav-element"
+                routerLink="spam"
+                routerLinkActive="active"
+              >
+                <div class="text-black fs-6">
+                  <i class="fa-solid fa-triangle-exclamation"></i>
+                  <span class="ps-2">Spam</span>
+                </div>
+                <span class="text-black-50 fw-bold">{{ spam.length }}</span>
+              </a>
+            </li>
+          </ul>
+
+          <h3 class="h6 mb-3">Label</h3>
+          <ul class="list-unstyled">
+            <li class="d-flex align-items-center ms-3 mb-3">
+              <input type="checkbox" id="medicine" class="me-2" />
+              <label for="medicine">Medicine</label>
+            </li>
+            <li class="d-flex align-items-center ms-3 mb-3">
+              <input type="checkbox" id="Engineering" class="me-2" />
+              <label for="Engineering">Engineering</label>
+            </li>
+            <li class="d-flex align-items-center ms-3 mb-3">
+              <input type="checkbox" id="Pharmacy" class="me-2" />
+              <label for="Pharmacy">Pharmacy</label>
+            </li>
+            <li class="d-flex align-items-center ms-3 mb-3">
+              <input type="checkbox" id="Science" class="me-2" />
+              <label for="Science">Science</label>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-8">
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,0 +1,86 @@
+.burger-minu {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 9999999;
+  width: fit-content;
+  font-size: 1.4rem;
+  cursor: pointer;
+  margin-left: 29px;
+  display: none;
+}
+.exit-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  width: fit-content;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.my-nav {
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.192);
+}
+.my-nav-element {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 13px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+.my-nav-element:hover {
+  background-color: #eee;
+}
+.my-nav-element.active {
+  background-color: #eee;
+}
+.my-nav-element.active i,
+.my-nav-element.active span {
+  color: var(--main-color-blue) !important;
+}
+@media (max-width: 992px) {
+  .my-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999999;
+    width: 300px;
+    margin: 0;
+    padding-top: 50px;
+    height: 100vh;
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+    padding: 10px;
+  }
+  .my-nav .content {
+    margin-top: 50px;
+  }
+  .burger-minu {
+    display: block;
+  }
+  .my-nav.active {
+    transform: translateX(0);
+  }
+}
+@media (min-width: 576px) {
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+}
+
+/* // X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+}
+
+/* // XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+}

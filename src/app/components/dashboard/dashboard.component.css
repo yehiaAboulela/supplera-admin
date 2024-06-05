@@ -1,0 +1,39 @@
+div {
+  --a: #e5e4ff;
+  --a-in: #8280ff;
+  --b: #fef2d6;
+  --b-in: #fec53d;
+  --c: #d9f7e8;
+  --c-in: #4ad991;
+  --d: #ffddd1;
+  --d-in: #ff9770;
+}
+.card-icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eee;
+  border-radius: 15px;
+}
+.card-icon i {
+  font-size: 1.8rem;
+}
+
+.card-a .card-icon {
+  background-color: var(--a);
+  color: var(--a-in);
+}
+.card-b .card-icon {
+  background-color: var(--b);
+  color: var(--b-in);
+}
+.card-c .card-icon {
+  background-color: var(--c);
+  color: var(--c-in);
+}
+.card-d .card-icon {
+  background-color: var(--d);
+  color: var(--d-in);
+}

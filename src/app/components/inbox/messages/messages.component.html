@@ -1,0 +1,127 @@
+<div class="table-parent bg-white px-3">
+  <div class="wrapper">
+    <div class="header">
+      <div class="search">
+        <span>
+          <i class="fa-solid fa-magnifying-glass px-3"></i>
+        </span>
+        <input type="text" placeholder="Search" [(ngModel)]="searchTerm" />
+      </div>
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-outline-dark">
+          <i class="fa-solid fa-download"></i>
+        </button>
+        <button type="button" class="btn btn-outline-dark">
+          <i class="fa-solid fa-circle-exclamation"></i>
+        </button>
+        <button type="button" class="btn btn-outline-dark">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </div>
+    </div>
+    <table class="table">
+      <tbody>
+        <tr
+          *ngFor="let product of products | search : searchTerm; index as index"
+          class="xs-small my-row"
+        >
+          <td>
+            <input type="checkbox" />
+          </td>
+          <td>{{ product.name }}</td>
+          <td>
+            <span class="p-2 bg-light">{{ product.category }}</span>
+          </td>
+          <td>
+            <p class="m-0">{{ product.price }}</p>
+          </td>
+          <td>
+            <button class="btn bg-main text-white" (click)="openDetails(index)">
+              Details
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- product details  -->
+
+<div class="parent" *ngIf="detailsActive">
+  <div class="container">
+    <div class="row g-3 my-card shadow">
+      <button (click)="detailsActive = false" class="btn exit-btn">
+        <i class="fa fa-x"></i>
+      </button>
+
+      <div class="col-lg-6">
+        <div>
+          <div class="main-image">
+            <img
+              [src]="products[detailsProduct].src[currentImg]"
+              [alt]="products[detailsProduct].name"
+            />
+          </div>
+          <div class="second-images">
+            <div
+              class="second-image curser-pointer"
+              *ngFor="let image of products[detailsProduct].src; index as index"
+              (click)="changeImg(index)"
+            >
+              <div>
+                <img
+                  [src]="image"
+                  [alt]="products[detailsProduct].name"
+                  class="w-100"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div>
+          <h1 class="h6 fw-bold">{{ products[detailsProduct].name }}</h1>
+          <p class="text-muted">
+            {{ products[detailsProduct].brand }}
+          </p>
+
+          <p>
+            <span class="fw-bold">category:</span>
+            {{ products[detailsProduct].category }}
+          </p>
+          <p>
+            <span class="fw-bold">price:</span>
+            {{ products[detailsProduct].price }}EGP
+          </p>
+          <p>
+            <span class="fw-bold">condetion:</span>
+            {{ products[detailsProduct].state }}
+          </p>
+          <p class="fw-bold mb-0">Description..</p>
+          <p>{{ products[detailsProduct].description }}</p>
+        </div>
+        <div class="options">
+          <button
+            class="btn bg-main text-white"
+            (click)="
+              sendToShippment(
+                { reviwedByAdmin: true },
+                products[detailsProduct].id
+              )
+            "
+          >
+            send to shippment
+          </button>
+          <button
+            class="btn btn-danger ms-2"
+            (click)="setAsSpam({ spam: true }, products[detailsProduct].id)"
+          >
+            set as spam
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

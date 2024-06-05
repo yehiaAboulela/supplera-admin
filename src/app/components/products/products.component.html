@@ -1,0 +1,61 @@
+<app-dashboard></app-dashboard>
+<br />
+<hr />
+<br />
+<section>
+  <div class="row g-3 row-gap-4">
+    <div class="col-12"><h2>Products</h2></div>
+    <div
+      class="col-6 col-md-4 col-xl-3"
+      *ngFor="let product of products; index as index"
+    >
+      <div class="product-card">
+        <div
+          class="position-relative img-parent img-thumbnail rounded-4 curser-pointer"
+          (click)="viewProductEdit(index)"
+        >
+          <img [src]="product.src[0]" [alt]="product.name" />
+          <span class="in-stock xs-small" *ngIf="product.stock > 0">
+            <i class="fa fa-dot-circle"></i> In Stock
+          </span>
+          <span class="out-stock xs-small" *ngIf="product.stock === 0">
+            <i class="fa fa-dot-circle"></i> Out Of Stock
+          </span>
+          <span
+            class="private-public fw-bold"
+            [ngClass]="{ 'text-black text-muted': product.status == 'private' }"
+          >
+            {{ product.status }}
+          </span>
+        </div>
+        <div class="product-details mt-2 p-2">
+          <div>
+            <h4 class="fs-6 text-muted">{{ product.category }}</h4>
+            <h2 class="fs-5 fw-bolder">
+              {{ product.name.split(" ").slice(0, 3).join(" ") }}
+            </h2>
+          </div>
+          <div>
+            <span class="price">{{ product.price }}EGP</span>
+            <span class="xs-small ps-2 fw-bold text-warning">
+              <i class="fa fa-star"></i>
+              {{
+                { likes: product.like, unlikes: product.unlike } | calcRating
+              }}
+            </span>
+            <span class="xs-small text-muted ps-1 fw-bold">
+              ({{ product.like.length + product.unlike.length }})
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div *ngIf="editProductActive">
+  <app-edit-product
+    [productId]="currentProduct"
+    (exitWindow)="exitWindow($event)"
+  ></app-edit-product>
+</div>

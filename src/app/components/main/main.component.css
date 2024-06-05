@@ -1,0 +1,9 @@
+section {
+  background-color: #f5f4f8;
+}
+.side {
+  min-width: 100px;
+  height: calc(100vh - 84.31px);
+  position: sticky;
+  top: 84.31px;
+}

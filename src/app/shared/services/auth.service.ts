@@ -14,7 +14,7 @@ export class AuthService {
   headers = this._TokenService.token;
   login(body: any): Observable<any> {
     return this._HttpClient.post(
-      'https://supplera-backend-o6om.onrender.com',
+      'https://supplera-backend-o6om.onrender.com/auth/login',
       body
     );
   }

@@ -25,6 +25,22 @@
       </div>
       <div class="col-lg-6">
         <div>
+          <div class="mb-3">
+            <p>
+              {{
+                product.reviwedByAdmin
+                  ? "Reviwed By Admin"
+                  : "Not Reviwed By Admin"
+              }}
+            </p>
+            <p>
+              {{
+                product.reviwedByShipper
+                  ? "Reviwed By Shipper"
+                  : "Not Reviwed By Shipper"
+              }}
+            </p>
+          </div>
           <form (ngSubmit)="editProduct()" [formGroup]="editBody">
             <h1 class="h6 fw-bold">{{ product.name }}</h1>
             <div

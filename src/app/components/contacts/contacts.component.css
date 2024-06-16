@@ -1,0 +1,12 @@
+.fake-btn {
+  font-size: 0.8rem;
+  padding: 5px 10px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  width: fit-content;
+  margin-inline: auto;
+}
+.card {
+  border-radius: 10px;
+  overflow: hidden;
+}

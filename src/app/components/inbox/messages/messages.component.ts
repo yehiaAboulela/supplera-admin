@@ -1,3 +1,4 @@
+import { InboxService } from './../../../shared/services/inbox.service';
 import { Product } from './../../../shared/interfaces/product';
 import { ProductsService } from './../../../shared/services/products.service';
 import { Component } from '@angular/core';
@@ -8,7 +9,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./messages.component.css'],
 })
 export class MessagesComponent {
-  constructor(private _ProductsService: ProductsService) {}
+  constructor(
+    private _ProductsService: ProductsService,
+    private InboxService: InboxService
+  ) {}
   products: Product[] = [];
   detailsProduct: number = 0;
   detailsActive: boolean = false;
@@ -31,9 +35,27 @@ export class MessagesComponent {
   }
 
   sendToShippment(body: any, id: string) {
-    this._ProductsService.editProduct(body, id).subscribe();
+    this._ProductsService.editProduct(body, id).subscribe({
+      next: () => {
+        this._ProductsService.getProducts().subscribe({
+          next: (res: { message: string; products: Product[] }) => {
+            this.InboxService.inboxData.next(res.products);
+            this.products = res.products.filter((cur) => !cur.reviwedByAdmin);
+          },
+        });
+      },
+    });
   }
   setAsSpam(body: any, id: string) {
-    this._ProductsService.editProduct(body, id).subscribe();
+    this._ProductsService.editProduct(body, id).subscribe({
+      next: () => {
+        this._ProductsService.getProducts().subscribe({
+          next: (res: { message: string; products: Product[] }) => {
+            this.InboxService.inboxData.next(res.products);
+            this.products = res.products.filter((cur) => !cur.reviwedByAdmin);
+          },
+        });
+      },
+    });
   }
 }

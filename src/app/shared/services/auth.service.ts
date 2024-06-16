@@ -13,9 +13,12 @@ export class AuthService {
   ) {}
   headers = this._TokenService.token;
   login(body: any): Observable<any> {
-    return this._HttpClient.post(
-      'https://supplera-backend-o6om.onrender.com/auth/login',
-      body
-    );
+    return this._HttpClient.post('http://localhost:3000/auth/login', body);
+  }
+
+  logout(): Observable<any> {
+    return this._HttpClient.post(`http://localhost:3000/auth/logout`, 'yehia', {
+      headers: this.headers,
+    });
   }
 }

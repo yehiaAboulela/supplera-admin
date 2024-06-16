@@ -14,37 +14,24 @@ export class ProductsService {
   token = this.TokenService.token;
 
   getProducts(): Observable<any> {
-    return this._HttpClient.get(
-      `https://supplera-backend-o6om.onrender.com/product`
-    );
+    return this._HttpClient.get(`http://localhost:3000/product`);
   }
 
   addProduct(details: any): Observable<any> {
-    return this._HttpClient.post(
-      `https://supplera-backend-o6om.onrender.com/product/add`,
-      details,
-      {
-        headers: this.token,
-      }
-    );
+    return this._HttpClient.post(`http://localhost:3000/product/add`, details, {
+      headers: this.token,
+    });
   }
 
   editProduct(body: object, id: string) {
-    return this._HttpClient.put(
-      `https://supplera-backend-o6om.onrender.com/product/${id}`,
-      body,
-      {
-        headers: this.token,
-      }
-    );
+    return this._HttpClient.put(`http://localhost:3000/product/${id}`, body, {
+      headers: this.token,
+    });
   }
 
   deleteProduct(id: string): Observable<any> {
-    return this._HttpClient.delete(
-      `https://supplera-backend-o6om.onrender.com/book/delete/${id}`,
-      {
-        headers: this.token,
-      }
-    );
+    return this._HttpClient.delete(`http://localhost:3000/book/delete/${id}`, {
+      headers: this.token,
+    });
   }
 }

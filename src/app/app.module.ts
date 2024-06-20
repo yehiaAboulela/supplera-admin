@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +25,7 @@ import { DraftComponent } from './components/inbox/draft/draft.component';
 import { SpamComponent } from './components/inbox/spam/spam.component';
 import { CalcRatingPipe } from './shared/services/pipes/calc-rating.pipe';
 import { SearchPipe } from './shared/services/pipes/search.pipe';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import { SearchPipe } from './shared/services/pipes/search.pipe';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -30,7 +30,7 @@ export class ProductsService {
   }
 
   deleteProduct(id: string): Observable<any> {
-    return this._HttpClient.delete(`http://localhost:3000/book/delete/${id}`, {
+    return this._HttpClient.delete(`http://localhost:3000/product/${id}`, {
       headers: this.token,
     });
   }

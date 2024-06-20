@@ -1,6 +1,7 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductsService } from './../../shared/services/products.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-product',
@@ -10,7 +11,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class EditProductComponent implements OnInit {
   constructor(
     private _ProductsService: ProductsService,
-    private FormBuilder: FormBuilder
+    private FormBuilder: FormBuilder,
+    private toastr: ToastrService
   ) {}
   @Input() productId: number = 0;
   @Output() exitWindow: EventEmitter<boolean> = new EventEmitter(true);
@@ -71,13 +73,13 @@ export class EditProductComponent implements OnInit {
       .editProduct(productEditBody, this.product.id)
       .subscribe({
         next: (res: any) => {
-          console.log(res);
+          this.toastr.success('Product has updated successfuliy', 'success');
           this.product = res.updateProduct;
           this.confirmSpinner = false;
         },
       });
   }
-  /*   deleteProduct(id: string) {
+  deleteProduct(id: string) {
     console.log(id);
     this.deleteSpinner = true;
     this._ProductsService.deleteProduct(id).subscribe({
@@ -86,5 +88,5 @@ export class EditProductComponent implements OnInit {
         this.deleteSpinner = false;
       },
     });
-  } */
+  }
 }

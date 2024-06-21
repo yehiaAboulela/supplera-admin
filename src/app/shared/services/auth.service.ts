@@ -21,8 +21,8 @@ export class AuthService {
       headers: this.headers,
     });
   }
-  getUserProfile(){
-    return this._HttpClient.get(`http://localhost:3000/user/profile`,{
+  getUserProfile() {
+    return this._HttpClient.get(`http://localhost:3000/user/profile`, {
       headers: this.headers,
     });
   }

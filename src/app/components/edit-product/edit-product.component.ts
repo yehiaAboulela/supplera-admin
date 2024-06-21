@@ -84,7 +84,7 @@ export class EditProductComponent implements OnInit {
     this.deleteSpinner = true;
     this._ProductsService.deleteProduct(id).subscribe({
       next: (res) => {
-        console.log(res);
+        this.toastr.success('Product has deleted successfuliy', 'success');
         this.deleteSpinner = false;
       },
     });
